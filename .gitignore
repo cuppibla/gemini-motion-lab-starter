@@ -1,0 +1,53 @@
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.swp
+
+# Environments / Secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.example
+*.pem
+*.key
+__pycache__/
+
+# Python
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Node / Frontend
+node_modules/
+dist/
+dist-ssr/
+.npm/
+
+wallet-key.json
+backend/wallet-key.json
+backend/certs/
+# Tool specific
+.agents/
+.agent/
+_agents/
+_agent/
+.claude/
+.gemini/
+
+# Test artifacts
+backend/test_nano_output.png
+
+# Local locks
+skills-lock.json
+frontend/skills-lock.json

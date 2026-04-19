@@ -1,0 +1,8 @@
+.env
+.venv/
+certs/
+wallet-key.json
+__pycache__/
+*.pyc
+test_*.py
+uv.lock

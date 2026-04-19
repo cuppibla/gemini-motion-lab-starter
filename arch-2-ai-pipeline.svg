@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 880">
+<style>text { font-family: Helvetica, Arial, sans-serif; }</style>
+<defs>
+<marker id="a-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4285F4"/></marker>
+<marker id="a-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#34A853"/></marker>
+<marker id="a-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#FF6D00"/></marker>
+<marker id="a-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#AB47BC"/></marker>
+<marker id="a-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#EA4335"/></marker>
+<marker id="a-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#00BCD4"/></marker>
+<marker id="a-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9E9E9E"/></marker>
+</defs>
+<rect width="960" height="880" fill="#0D0D1F"/>
+<text x="480" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">Gemini Motion Lab — AI Model Pipeline</text>
+<text x="480" y="58" text-anchor="middle" font-size="12" fill="#9E9E9E">From user recording to composed motion video  |  Full AI workflow step by step</text>
+<rect x="20" y="70" width="920" height="90" rx="10" fill="#546E7A" fill-opacity="0.08" stroke="#546E7A" stroke-width="1.5"/>
+<circle cx="55" cy="115" r="18" fill="#546E7A" fill-opacity="0.9"/>
+<text x="55" y="121" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">1</text>
+<text x="85" y="109" font-size="15" font-weight="bold" fill="#546E7A">VIDEO UPLOAD</text>
+<rect x="200" y="84" width="190" height="62" rx="6" fill="#37474F" stroke="#546E7A" stroke-width="1"/>
+<text x="295" y="102" text-anchor="middle" font-size="11" font-weight="bold" fill="#ECEFF1">Browser Recording</text>
+<text x="295" y="118" text-anchor="middle" font-size="10" fill="#B0BEC5">MediaRecorder API</text>
+<text x="295" y="134" text-anchor="middle" font-size="10" fill="#B0BEC5">5 sec WebM/VP8 blob</text>
+<line x1="390" y1="115" x2="430" y2="115" stroke="#546E7A" stroke-width="2" marker-end="url(#a-gray)"/>
+<text x="410" y="110" text-anchor="middle" font-size="9" fill="#9E9E9E">POST</text>
+<rect x="435" y="84" width="185" height="62" rx="6" fill="#37474F" stroke="#546E7A" stroke-width="1"/>
+<text x="527" y="102" text-anchor="middle" font-size="11" font-weight="bold" fill="#ECEFF1">POST /api/upload</text>
+<text x="527" y="118" text-anchor="middle" font-size="10" fill="#B0BEC5">video_id = uuid4()</text>
+<text x="527" y="134" text-anchor="middle" font-size="10" fill="#B0BEC5">share_url generated</text>
+<line x1="620" y1="115" x2="660" y2="115" stroke="#34A853" stroke-width="2" marker-end="url(#a-green)"/>
+<rect x="665" y="84" width="255" height="62" rx="6" fill="#1B5E20" fill-opacity="0.3" stroke="#2E7D32" stroke-width="1"/>
+<text x="793" y="102" text-anchor="middle" font-size="11" font-weight="bold" fill="#A5D6A7">GCS Output</text>
+<text x="793" y="118" text-anchor="middle" font-size="10" fill="#81C784">gs://gemini-motion-lab/</text>
+<text x="793" y="134" text-anchor="middle" font-size="10" fill="#81C784">uploads/{video_id}.webm</text>
+<line x1="480" y1="160" x2="480" y2="180" stroke="gray" stroke-width="2.5" marker-end="url(#a-gray)"/>
+<rect x="440" y="162" width="80" height="14" rx="3" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="480" y="173" text-anchor="middle" font-size="10" fill="#9E9E9E">video_id + GCS URI</text>
+<rect x="20" y="180" width="920" height="190" rx="10" fill="#EA4335" fill-opacity="0.08" stroke="#EA4335" stroke-width="1.5"/>
+<circle cx="55" cy="275" r="18" fill="#EA4335" fill-opacity="0.9"/>
+<text x="55" y="281" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">2</text>
+<text x="85" y="269" font-size="15" font-weight="bold" fill="#EA4335">MOTION ANALYSIS  (SSE Streaming)</text>
+<rect x="200" y="210" width="155" height="150" rx="6" fill="#B71C1C" fill-opacity="0.2" stroke="#E53935" stroke-width="1.5"/>
+<text x="277" y="232" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFCDD2">Gemini Cascade</text>
+<rect x="210" y="240" width="135" height="24" rx="4" fill="#C62828" fill-opacity="0.5" stroke="#E53935" stroke-width="1"/>
+<text x="277" y="256" text-anchor="middle" font-size="10" fill="#FFCDD2">gemini-2.5-pro</text>
+<text x="277" y="272" text-anchor="middle" font-size="9" fill="#9E9E9E">↓ fallback</text>
+<rect x="210" y="278" width="135" height="24" rx="4" fill="#B71C1C" fill-opacity="0.4" stroke="#EF5350" stroke-width="1"/>
+<text x="277" y="294" text-anchor="middle" font-size="10" fill="#EF9A9A">gemini-2.5-flash</text>
+<text x="277" y="310" text-anchor="middle" font-size="9" fill="#9E9E9E">↓ fallback</text>
+<rect x="210" y="316" width="135" height="24" rx="4" fill="#B71C1C" fill-opacity="0.3" stroke="#EF9A9A" stroke-width="1"/>
+<text x="277" y="332" text-anchor="middle" font-size="10" fill="#FFCDD2">gemini-2.5-flash-lite</text>
+<text x="277" y="346" text-anchor="middle" font-size="9" fill="#9E9E9E">response: JSON | thinking: 1024</text>
+<rect x="368" y="210" width="175" height="150" rx="6" fill="#1A237E" fill-opacity="0.2" stroke="#3949AB" stroke-width="1"/>
+<text x="455" y="232" text-anchor="middle" font-size="11" font-weight="bold" fill="#C5CAE9">SSE Phase Stream</text>
+<text x="455" y="248" text-anchor="middle" font-size="10" fill="#9FA8DA">• Uploading video...</text>
+<text x="455" y="268" text-anchor="middle" font-size="10" fill="#9FA8DA">• Detecting landmarks...</text>
+<text x="455" y="288" text-anchor="middle" font-size="10" fill="#9FA8DA">• Analyzing motion...</text>
+<text x="455" y="308" text-anchor="middle" font-size="10" fill="#9FA8DA">• Computing phases...</text>
+<text x="455" y="328" text-anchor="middle" font-size="10" fill="#9FA8DA">• Identifying style...</text>
+<text x="455" y="352" text-anchor="middle" font-size="9" fill="#7986CB">event: phase / event: result</text>
+<rect x="556" y="210" width="360" height="150" rx="6" fill="#3E2723" fill-opacity="0.3" stroke="#EA4335" stroke-width="1"/>
+<text x="736" y="232" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFCDD2">AnalysisResult JSON</text>
+<text x="566" y="248" font-size="10" fill="#EF9A9A">• movement_summary, body_parts[]</text>
+<text x="566" y="266" font-size="10" fill="#EF9A9A">• phases[]: time_range / action / tempo / energy</text>
+<text x="566" y="284" font-size="10" fill="#EF9A9A">• camera_angle, overall_style</text>
+<text x="566" y="302" font-size="10" fill="#EF9A9A">• best_frame_timestamp → ffmpeg frame extract</text>
+<text x="566" y="320" font-size="10" fill="#EF9A9A">• frame_uri: gs://.../frames/{id}.png</text>
+<text x="566" y="338" font-size="10" fill="#EF9A9A">• person_description</text>
+<text x="566" y="356" font-size="10" fill="#EF9A9A">• veo_prompt  (used in Step 4)</text>
+<line x1="480" y1="370" x2="480" y2="390" stroke="gray" stroke-width="2.5" marker-end="url(#a-gray)"/>
+<rect x="440" y="372" width="80" height="14" rx="3" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="480" y="383" text-anchor="middle" font-size="10" fill="#9E9E9E">analysis JSON + frame_uri</text>
+<rect x="20" y="390" width="920" height="125" rx="10" fill="#4285F4" fill-opacity="0.08" stroke="#4285F4" stroke-width="1.5"/>
+<circle cx="55" cy="452" r="18" fill="#4285F4" fill-opacity="0.9"/>
+<text x="55" y="458" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">3</text>
+<text x="85" y="446" font-size="15" font-weight="bold" fill="#4285F4">AVATAR IMAGE GENERATION</text>
+<rect x="200" y="412" width="180" height="90" rx="6" fill="#0D47A1" fill-opacity="0.3" stroke="#1565C0" stroke-width="1.5"/>
+<text x="290" y="432" text-anchor="middle" font-size="11" font-weight="bold" fill="#E3F2FD">gemini-2.5-flash-image</text>
+<text x="290" y="448" text-anchor="middle" font-size="10" fill="#90CAF9">modalities: [IMAGE]</text>
+<text x="290" y="464" text-anchor="middle" font-size="10" fill="#90CAF9">aspect_ratio: 1:1</text>
+<text x="290" y="480" text-anchor="middle" font-size="10" fill="#90CAF9">output: PNG  |  safety: OFF</text>
+<text x="290" y="496" text-anchor="middle" font-size="9" fill="#64B5F6">temp=1  |  top_p=0.95  |  max_tokens=8192</text>
+<rect x="393" y="412" width="240" height="90" rx="6" fill="#1A237E" fill-opacity="0.2" stroke="#3949AB" stroke-width="1"/>
+<text x="513" y="430" text-anchor="middle" font-size="11" font-weight="bold" fill="#C5CAE9">Avatar Styles</text>
+<text x="513" y="446" text-anchor="middle" font-size="10" fill="#9FA8DA">pixel-hero  •  cyber-nova</text>
+<text x="513" y="463" text-anchor="middle" font-size="10" fill="#9FA8DA">ink-warrior  •  neon-spirit</text>
+<text x="513" y="480" text-anchor="middle" font-size="10" fill="#9FA8DA">golden-legend  •  chrome-phantom</text>
+<text x="513" y="497" text-anchor="middle" font-size="10" fill="#9FA8DA">oil-dynasty  •  (custom prompt per style)</text>
+<rect x="646" y="412" width="270" height="90" rx="6" fill="#1B5E20" fill-opacity="0.2" stroke="#2E7D32" stroke-width="1"/>
+<text x="781" y="432" text-anchor="middle" font-size="11" font-weight="bold" fill="#A5D6A7">Output</text>
+<text x="781" y="448" text-anchor="middle" font-size="10" fill="#81C784">1024×1024 PNG avatar</text>
+<text x="781" y="464" text-anchor="middle" font-size="10" fill="#81C784">gs://.../avatars/{id}.png</text>
+<text x="781" y="480" text-anchor="middle" font-size="10" fill="#81C784">GCS signed URL returned</text>
+<text x="781" y="496" text-anchor="middle" font-size="10" fill="#81C784">→ wallet_hero.png composited later</text>
+<line x1="480" y1="515" x2="480" y2="535" stroke="gray" stroke-width="2.5" marker-end="url(#a-gray)"/>
+<rect x="440" y="517" width="80" height="14" rx="3" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="480" y="528" text-anchor="middle" font-size="10" fill="#9E9E9E">avatar PNG + veo_prompt</text>
+<rect x="20" y="535" width="920" height="120" rx="10" fill="#34A853" fill-opacity="0.08" stroke="#34A853" stroke-width="1.5"/>
+<circle cx="55" cy="595" r="18" fill="#34A853" fill-opacity="0.9"/>
+<text x="55" y="601" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">4</text>
+<text x="85" y="589" font-size="15" font-weight="bold" fill="#34A853">VIDEO GENERATION  (Veo)</text>
+<rect x="200" y="557" width="200" height="88" rx="6" fill="#1B5E20" fill-opacity="0.3" stroke="#2E7D32" stroke-width="1.5"/>
+<text x="300" y="577" text-anchor="middle" font-size="11" font-weight="bold" fill="#A5D6A7">veo-3.1-fast-generate-001</text>
+<text x="300" y="593" text-anchor="middle" font-size="10" fill="#81C784">ref image: avatar PNG (ASSET)</text>
+<text x="300" y="609" text-anchor="middle" font-size="10" fill="#81C784">16:9  |  8s  |  no audio</text>
+<text x="300" y="625" text-anchor="middle" font-size="10" fill="#81C784">person_generation=allow_all</text>
+<text x="300" y="641" text-anchor="middle" font-size="9" fill="#4CAF50">retry: 3×  |  timeout: 120s/attempt</text>
+<rect x="413" y="557" width="195" height="88" rx="6" fill="#E65100" fill-opacity="0.15" stroke="#FF6D00" stroke-width="1"/>
+<text x="510" y="577" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFE0B2">Async Dispatch</text>
+<text x="510" y="593" text-anchor="middle" font-size="10" fill="#FFCC80">returns operation_id</text>
+<text x="510" y="609" text-anchor="middle" font-size="10" fill="#FFCC80">immediately (fire-and-forget)</text>
+<text x="510" y="625" text-anchor="middle" font-size="10" fill="#FFCC80">queue.register(video_id)</text>
+<text x="510" y="641" text-anchor="middle" font-size="10" fill="#FFCC80">pipeline.spawn(op_id, vid_id)</text>
+<rect x="621" y="557" width="295" height="88" rx="6" fill="#4A148C" fill-opacity="0.15" stroke="#7B1FA2" stroke-width="1"/>
+<text x="769" y="577" text-anchor="middle" font-size="11" font-weight="bold" fill="#E1BEE7">Queue Management</text>
+<text x="769" y="593" text-anchor="middle" font-size="10" fill="#CE93D8">_active_jobs: set  |  MAX=3 concurrent</text>
+<text x="769" y="609" text-anchor="middle" font-size="10" fill="#CE93D8">GET /api/queue/status  →  {active, max, available}</text>
+<text x="769" y="625" text-anchor="middle" font-size="10" fill="#CE93D8">kiosk checks before starting new session</text>
+<text x="769" y="641" text-anchor="middle" font-size="10" fill="#CE93D8">QueueFullScreen shown when full</text>
+<line x1="480" y1="655" x2="480" y2="675" stroke="gray" stroke-width="2.5" marker-end="url(#a-gray)"/>
+<rect x="440" y="657" width="80" height="14" rx="3" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="480" y="668" text-anchor="middle" font-size="10" fill="#9E9E9E">operation_id (background)</text>
+<rect x="20" y="675" width="920" height="180" rx="10" fill="#FF6D00" fill-opacity="0.08" stroke="#FF6D00" stroke-width="1.5"/>
+<circle cx="55" cy="765" r="18" fill="#FF6D00" fill-opacity="0.9"/>
+<text x="55" y="771" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF">5</text>
+<text x="85" y="759" font-size="15" font-weight="bold" fill="#FF6D00">BACKGROUND PIPELINE  (asyncio, fire-and-forget)</text>
+<rect x="95" y="703" width="250" height="140" rx="6" fill="#E65100" fill-opacity="0.2" stroke="#FF6D00" stroke-width="1"/>
+<text x="220" y="723" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFE0B2">Poll Veo Operation</text>
+<text x="103" y="739" font-size="10" fill="#FFE0B2">• poll every 5s via SDK client.operations.get</text>
+<text x="103" y="757" font-size="10" fill="#FFE0B2">• max 120 attempts (10 min timeout)</text>
+<text x="103" y="775" font-size="10" fill="#FFE0B2">• status: processing → complete → failed</text>
+<text x="103" y="793" font-size="10" fill="#FFE0B2">• returns raw mp4 GCS URI when done</text>
+<text x="103" y="811" font-size="10" fill="#FFE0B2">• exponential backoff on error</text>
+<line x1="345" y1="773" x2="365" y2="773" stroke="#FF6D00" stroke-width="2" marker-end="url(#a-orange)"/>
+<rect x="367" y="703" width="240" height="140" rx="6" fill="#E65100" fill-opacity="0.2" stroke="#FF6D00" stroke-width="1"/>
+<text x="487" y="723" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFE0B2">Trim Video (ffmpeg)</text>
+<text x="375" y="739" font-size="10" fill="#FFE0B2">• download raw Veo mp4 from GCS</text>
+<text x="375" y="757" font-size="10" fill="#FFE0B2">• ffmpeg trim to 3.0s</text>
+<text x="375" y="775" font-size="10" fill="#FFE0B2">• upload trimmed_3s.mp4 → GCS</text>
+<text x="375" y="793" font-size="10" fill="#FFE0B2">• fallback: use raw video if trim fails</text>
+<text x="375" y="811" font-size="10" fill="#FFE0B2">• temp files cleaned up after</text>
+<line x1="607" y1="773" x2="627" y2="773" stroke="#FF6D00" stroke-width="2" marker-end="url(#a-orange)"/>
+<rect x="629" y="703" width="280" height="140" rx="6" fill="#E65100" fill-opacity="0.2" stroke="#FF6D00" stroke-width="1"/>
+<text x="769" y="723" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFE0B2">Compose Side-by-Side</text>
+<text x="637" y="739" font-size="10" fill="#FFE0B2">• download original .webm + trimmed mp4</text>
+<text x="637" y="757" font-size="10" fill="#FFE0B2">• ffmpeg compose: 9:16 vertical split</text>
+<text x="637" y="775" font-size="10" fill="#FFE0B2">• upload composed.mp4 → GCS</text>
+<text x="637" y="793" font-size="10" fill="#FFE0B2">• store in _composed_cache (in-memory)</text>
+<text x="637" y="811" font-size="10" fill="#FFE0B2">• queue.complete(video_id) → free slot</text>
+<rect x="10" y="870" width="940" height="32" rx="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+<text x="20" y="886" font-size="10" font-weight="bold" fill="#9E9E9E">Legend:</text>
+<rect x="78" y="878" width="12" height="12" rx="2" fill="#EA4335" fill-opacity="0.8"/>
+<text x="96" y="888" font-size="9" fill="#9E9E9E">Gemini analysis</text>
+<rect x="252" y="878" width="12" height="12" rx="2" fill="#4285F4" fill-opacity="0.8"/>
+<text x="270" y="888" font-size="9" fill="#9E9E9E">Gemini image gen</text>
+<rect x="426" y="878" width="12" height="12" rx="2" fill="#34A853" fill-opacity="0.8"/>
+<text x="444" y="888" font-size="9" fill="#9E9E9E">Veo video gen</text>
+<rect x="600" y="878" width="12" height="12" rx="2" fill="#FF6D00" fill-opacity="0.8"/>
+<text x="618" y="888" font-size="9" fill="#9E9E9E">Background pipeline</text>
+<rect x="774" y="878" width="12" height="12" rx="2" fill="#9E9E9E" fill-opacity="0.8"/>
+<text x="792" y="888" font-size="9" fill="#9E9E9E">Fallback/cascade</text>
+</svg>

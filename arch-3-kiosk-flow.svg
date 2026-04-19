@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640">
+<style>text { font-family: Helvetica, Arial, sans-serif; }</style>
+<defs>
+<marker id="a-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#4285F4"/></marker>
+<marker id="a-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#34A853"/></marker>
+<marker id="a-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#FF6D00"/></marker>
+<marker id="a-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#AB47BC"/></marker>
+<marker id="a-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#EA4335"/></marker>
+<marker id="a-gray" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#9E9E9E"/></marker>
+<marker id="a-teal" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#00BCD4"/></marker>
+</defs>
+<rect width="1200" height="640" fill="#0D0D1F"/>
+<text x="600" y="36" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">Gemini Motion Lab — Kiosk UX Flow &amp; Queue System</text>
+<text x="600" y="56" text-anchor="middle" font-size="12" fill="#9E9E9E">React screen flow  |  kiosk operates as fullscreen PWA  |  30-min idle auto-reset</text>
+<rect x="10" y="75" width="128" height="175" rx="8" fill="#1A237E" fill-opacity="0.25" stroke="#3949AB" stroke-width="1.5"/>
+<rect x="10" y="75" width="128" height="26" rx="8" fill="#3949AB" fill-opacity="0.7"/>
+<rect x="10" y="93" width="128" height="8" fill="#3949AB" fill-opacity="0.7"/>
+<text x="74" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Welcome</text>
+<text x="18" y="117" font-size="10" fill="#7986CB">ShowcaseGallery</text>
+<text x="18" y="139" font-size="10" fill="#7986CB">auto-plays demo</text>
+<text x="18" y="161" font-size="10" fill="#7986CB">videos in loop</text>
+<text x="18" y="205" font-size="10" fill="#7986CB">Start button →</text>
+<rect x="152" y="75" width="128" height="175" rx="8" fill="#01579B" fill-opacity="0.25" stroke="#0277BD" stroke-width="1.5"/>
+<rect x="152" y="75" width="128" height="26" rx="8" fill="#0277BD" fill-opacity="0.7"/>
+<rect x="152" y="93" width="128" height="8" fill="#0277BD" fill-opacity="0.7"/>
+<text x="216" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Record</text>
+<text x="160" y="117" font-size="10" fill="#4FC3F7">5-sec countdown</text>
+<text x="160" y="139" font-size="10" fill="#4FC3F7">MediaRecorder</text>
+<text x="160" y="161" font-size="10" fill="#4FC3F7">WebM/VP8 blob</text>
+<text x="160" y="205" font-size="10" fill="#4FC3F7">→ AvatarStyle</text>
+<rect x="294" y="75" width="128" height="175" rx="8" fill="#4A148C" fill-opacity="0.25" stroke="#6A1B9A" stroke-width="1.5"/>
+<rect x="294" y="75" width="128" height="26" rx="8" fill="#6A1B9A" fill-opacity="0.7"/>
+<rect x="294" y="93" width="128" height="8" fill="#6A1B9A" fill-opacity="0.7"/>
+<text x="358" y="88" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Avatar</text>
+<text x="358" y="99" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Style</text>
+<text x="302" y="117" font-size="10" fill="#CE93D8">6 style cards</text>
+<text x="302" y="139" font-size="10" fill="#CE93D8">pixel-hero</text>
+<text x="302" y="161" font-size="10" fill="#CE93D8">cyber-nova etc</text>
+<text x="302" y="183" font-size="10" fill="#CE93D8">30s timeout</text>
+<text x="302" y="205" font-size="10" fill="#CE93D8">→ auto-reset</text>
+<rect x="436" y="75" width="128" height="175" rx="8" fill="#004D40" fill-opacity="0.25" stroke="#00695C" stroke-width="1.5"/>
+<rect x="436" y="75" width="128" height="26" rx="8" fill="#00695C" fill-opacity="0.7"/>
+<rect x="436" y="93" width="128" height="8" fill="#00695C" fill-opacity="0.7"/>
+<text x="500" y="88" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Location</text>
+<text x="500" y="99" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">Theme</text>
+<text x="444" y="117" font-size="10" fill="#80CBC4">Pick theme</text>
+<text x="444" y="139" font-size="10" fill="#80CBC4">(location bg)</text>
+<text x="444" y="161" font-size="10" fill="#80CBC4">for Veo prompt</text>
+<text x="444" y="183" font-size="10" fill="#80CBC4">30s timeout</text>
+<text x="444" y="205" font-size="10" fill="#80CBC4">→ auto-reset</text>
+<rect x="578" y="75" width="128" height="175" rx="8" fill="#B71C1C" fill-opacity="0.25" stroke="#C62828" stroke-width="1.5"/>
+<rect x="578" y="75" width="128" height="26" rx="8" fill="#C62828" fill-opacity="0.7"/>
+<rect x="578" y="93" width="128" height="8" fill="#C62828" fill-opacity="0.7"/>
+<text x="642" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Processing</text>
+<text x="586" y="117" font-size="10" fill="#EF9A9A">1. Upload WebM</text>
+<text x="586" y="139" font-size="10" fill="#EF9A9A">2. SSE Analyze</text>
+<text x="586" y="161" font-size="10" fill="#EF9A9A">3. Gen Avatar</text>
+<text x="586" y="183" font-size="10" fill="#EF9A9A">4. Start Veo</text>
+<text x="586" y="205" font-size="10" fill="#EF9A9A">5. Show QR code</text>
+<rect x="720" y="75" width="128" height="175" rx="8" fill="#1B5E20" fill-opacity="0.25" stroke="#2E7D32" stroke-width="1.5"/>
+<rect x="720" y="75" width="128" height="26" rx="8" fill="#2E7D32" fill-opacity="0.7"/>
+<rect x="720" y="93" width="128" height="8" fill="#2E7D32" fill-opacity="0.7"/>
+<text x="784" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Result</text>
+<text x="728" y="117" font-size="10" fill="#A5D6A7">Composed video</text>
+<text x="728" y="139" font-size="10" fill="#A5D6A7">Avatar image</text>
+<text x="728" y="161" font-size="10" fill="#A5D6A7">Share button</text>
+<text x="728" y="183" font-size="10" fill="#A5D6A7">Try Again</text>
+<text x="728" y="205" font-size="10" fill="#A5D6A7">30-min idle</text>
+<rect x="862" y="75" width="128" height="175" rx="8" fill="#37474F" fill-opacity="0.25" stroke="#455A64" stroke-width="1.5"/>
+<rect x="862" y="75" width="128" height="26" rx="8" fill="#455A64" fill-opacity="0.7"/>
+<rect x="862" y="93" width="128" height="8" fill="#455A64" fill-opacity="0.7"/>
+<text x="926" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#FFFFFF">Share</text>
+<text x="870" y="117" font-size="10" fill="#90A4AE">Large QR code</text>
+<text x="870" y="139" font-size="10" fill="#90A4AE">share URL text</text>
+<text x="870" y="161" font-size="10" fill="#90A4AE">Next Person →</text>
+<text x="870" y="183" font-size="10" fill="#90A4AE">(checks queue)</text>
+<text x="870" y="205" font-size="10" fill="#90A4AE">Done → reset</text>
+<line x1="138" y1="162" x2="152" y2="162" stroke="#34A853" stroke-width="2.5" marker-end="url(#a-green)"/>
+<line x1="280" y1="162" x2="294" y2="162" stroke="#4285F4" stroke-width="2.5" marker-end="url(#a-blue)"/>
+<line x1="422" y1="162" x2="436" y2="162" stroke="#AB47BC" stroke-width="2.5" marker-end="url(#a-purple)"/>
+<line x1="564" y1="162" x2="578" y2="162" stroke="#00BCD4" stroke-width="2.5" marker-end="url(#a-teal)"/>
+<line x1="706" y1="162" x2="720" y2="162" stroke="#EA4335" stroke-width="2.5" marker-end="url(#a-red)"/>
+<line x1="848" y1="162" x2="862" y2="162" stroke="#34A853" stroke-width="2.5" marker-end="url(#a-green)"/>
+<polygon points="144,142 164,162 144,182 124,162" fill="#E65100" fill-opacity="0.4" stroke="#FF6D00" stroke-width="2"/>
+<text x="144" y="166" text-anchor="middle" font-size="9" fill="#FF6D00">Q?</text>
+<line x1="138" y1="162" x2="124" y2="162" stroke="#FF6D00" stroke-width="2"/>
+<line x1="164" y1="162" x2="152" y2="162" stroke="#FF6D00" stroke-width="2" marker-end="url(#a-orange)"/>
+<rect x="120" y="140" width="50" height="13" rx="2" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="145" y="150" text-anchor="middle" font-size="9" fill="#34A853">avail</text>
+<rect x="85" y="278" width="148" height="95" rx="8" fill="#E65100" fill-opacity="0.15" stroke="#FF6D00" stroke-width="1.5"/>
+<rect x="85" y="278" width="148" height="24" rx="8" fill="#E65100" fill-opacity="0.5"/>
+<rect x="85" y="294" width="148" height="8" fill="#E65100" fill-opacity="0.5"/>
+<text x="159" y="294" text-anchor="middle" font-size="11" font-weight="bold" fill="#FFFFFF">QueueFull</text>
+<text x="93" y="316" font-size="10" fill="#FFCC80">"Sorry, booth is busy"</text>
+<text x="93" y="332" font-size="10" fill="#FFCC80">Poll queue every 3s</text>
+<text x="93" y="348" font-size="10" fill="#FFCC80">MAX_CONCURRENT=3</text>
+<text x="93" y="364" font-size="10" fill="#FFCC80">→ retry when slot opens</text>
+<line x1="144" y1="182" x2="144" y2="278" stroke="#FF6D00" stroke-width="2" marker-end="url(#a-orange)"/>
+<rect x="147" y="188" width="36" height="13" rx="2" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="165" y="198" text-anchor="middle" font-size="9" fill="#FF6D00">full</text>
+<path d="M 85,325 C 55,325 55,162 124,162" stroke="#FF6D00" stroke-width="1.5" stroke-dasharray="4,2" fill="none" marker-end="url(#a-orange)"/>
+<rect x="30" y="308" width="50" height="13" rx="2" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="55" y="318" text-anchor="middle" font-size="9" fill="#FF6D00">retry poll</text>
+<rect x="573" y="278" width="148" height="120" rx="6" fill="#B71C1C" fill-opacity="0.12" stroke="#E53935" stroke-width="1"/>
+<text x="645" y="296" text-anchor="middle" font-size="10" font-weight="bold" fill="#FFCDD2">Processing Steps</text>
+<text x="579" y="312" font-size="9" fill="#EF9A9A">① POST /upload → video_id</text>
+<text x="579" y="330" font-size="9" fill="#EF9A9A">② SSE /analyze → JSON + frame</text>
+<text x="579" y="348" font-size="9" fill="#EF9A9A">③ POST /gen-avatar → PNG</text>
+<text x="579" y="366" font-size="9" fill="#EF9A9A">④ POST /gen-video → op_id</text>
+<text x="579" y="384" font-size="9" fill="#EF9A9A">⑤ Shows QR + "Veo running"</text>
+<line x1="642" y1="250" x2="642" y2="278" stroke="#EA4335" stroke-width="1" stroke-dasharray="3,2"/>
+<rect x="1005" y="278" width="128" height="75" rx="8" fill="#263238" fill-opacity="0.5" stroke="#546E7A" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="1069" y="300" text-anchor="middle" font-size="11" font-weight="bold" fill="#90A4AE">DemoScreen</text>
+<text x="1069" y="318" text-anchor="middle" font-size="10" fill="#78909C">Showcase gallery</text>
+<text x="1069" y="334" text-anchor="middle" font-size="10" fill="#78909C">plays sample videos</text>
+<text x="1069" y="350" text-anchor="middle" font-size="10" fill="#78909C">→ "Try Again"</text>
+<line x1="1069" y1="250" x2="1069" y2="278" stroke="#546E7A" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#a-gray)"/>
+<rect x="1025" y="258" width="50" height="13" rx="2" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="1050" y="268" text-anchor="middle" font-size="9" fill="#546E7A">onDemo()</text>
+<path d="M 990,105 C 990,55 600,47 74,105" stroke="#9E9E9E" stroke-width="1.5" stroke-dasharray="6,3" fill="none" marker-end="url(#a-gray)"/>
+<rect x="480" y="41" width="142" height="14" rx="3" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="551" y="52" text-anchor="middle" font-size="10" fill="#9E9E9E">30-min idle → auto-reset (RESET)</text>
+<rect x="860" y="278" width="265" height="140" rx="8" fill="#4A148C" fill-opacity="0.12" stroke="#7B1FA2" stroke-width="1.5"/>
+<text x="992" y="298" text-anchor="middle" font-size="12" font-weight="bold" fill="#E1BEE7">Queue System (server-side)</text>
+<text x="870" y="318" font-size="10" fill="#CE93D8">• _active_jobs: set[str]  |  MAX_CONCURRENT=3</text>
+<text x="870" y="335" font-size="10" fill="#CE93D8">• register(video_id)  called when Veo starts</text>
+<text x="870" y="352" font-size="10" fill="#CE93D8">• complete(video_id)  called when pipeline done</text>
+<text x="870" y="369" font-size="10" fill="#CE93D8">• GET /api/queue/status →</text>
+<text x="880" y="385" font-size="10" fill="#CE93D8">{ active_jobs, max_jobs, available }</text>
+<text x="870" y="402" font-size="10" fill="#CE93D8">• kiosk polls after each session completes</text>
+<path d="M 990,242 C 990,428 860,428 720,160" stroke="#00BCD4" stroke-width="1.5" stroke-dasharray="4,2" fill="none" marker-end="url(#a-teal)"/>
+<rect x="820" y="418" width="82" height="13" rx="2" fill="#0D0D1F" fill-opacity="0.9"/>
+<text x="861" y="428" text-anchor="middle" font-size="9" fill="#00BCD4">Next Person flow</text>
+<rect x="10" y="600" width="1180" height="34" rx="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+<text x="18" y="618" font-size="10" font-weight="bold" fill="#9E9E9E">Legend:</text>
+<line x1="80" y1="617" x2="104" y2="617" stroke="#34A853" stroke-width="2" marker-end="url(#a-green)"/>
+<text x="110" y="621" font-size="9" fill="#9E9E9E">→ main flow (happy path)</text>
+<line x1="300" y1="617" x2="324" y2="617" stroke="#FF6D00" stroke-width="2" marker-end="url(#a-orange)"/>
+<text x="330" y="621" font-size="9" fill="#9E9E9E">→ queue check / branch</text>
+<line x1="520" y1="617" x2="544" y2="617" stroke="#9E9E9E" stroke-width="2" marker-end="url(#a-gray)"/>
+<text x="550" y="621" font-size="9" fill="#9E9E9E">- - idle reset / optional path</text>
+<line x1="740" y1="617" x2="764" y2="617" stroke="#00BCD4" stroke-width="2" marker-end="url(#a-teal)"/>
+<text x="770" y="621" font-size="9" fill="#9E9E9E">→ post-session flow</text>
+<line x1="960" y1="617" x2="984" y2="617" stroke="#EA4335" stroke-width="2" marker-end="url(#a-red)"/>
+<text x="990" y="621" font-size="9" fill="#9E9E9E">→ AI processing sequence</text>
+</svg>
