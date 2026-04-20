@@ -4,8 +4,7 @@
 # Creates:
 #   1. Service account for backend access
 #   2. GCS bucket for video storage (with CORS)
-#   3. IAM role bindings for the service account
-#   4. .env file with all required environment variables
+#   3. .env file with all required environment variables
 #
 # Usage:
 #   chmod +x setup.sh && ./setup.sh
@@ -52,35 +51,7 @@ else
     echo "   ✅ Created $SA_EMAIL"
 fi
 
-# ── Step 2: Grant IAM roles ─────────────────────────────────────────────────
-echo ""
-echo "🛡️  Granting IAM roles..."
-
-# Grant Storage Admin to service account
-gcloud projects add-iam-policy-binding "$PROJECT_ID" \
-    --member="serviceAccount:$SA_EMAIL" \
-    --role="roles/storage.admin" \
-    --quiet > /dev/null 2>&1
-echo "   ✅ Granted roles/storage.admin to service account"
-
-# Grant Vertex AI User to service account
-gcloud projects add-iam-policy-binding "$PROJECT_ID" \
-    --member="serviceAccount:$SA_EMAIL" \
-    --role="roles/aiplatform.user" \
-    --quiet > /dev/null 2>&1
-echo "   ✅ Granted roles/aiplatform.user to service account"
-
-# Grant Service Account Token Creator to the Compute Engine default SA
-PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
-COMPUTE_SA="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
-
-gcloud iam service-accounts add-iam-policy-binding "$SA_EMAIL" \
-    --member="serviceAccount:${COMPUTE_SA}" \
-    --role="roles/iam.serviceAccountTokenCreator" \
-    --quiet > /dev/null 2>&1
-echo "   ✅ Granted roles/iam.serviceAccountTokenCreator to Compute SA (${COMPUTE_SA})"
-
-# ── Step 3: Create GCS Bucket ───────────────────────────────────────────────
+# ── Step 2: Create GCS Bucket ───────────────────────────────────────────────
 echo ""
 echo "🪣 Creating GCS bucket..."
 if gcloud storage buckets describe "gs://${BUCKET_NAME}" &>/dev/null; then
@@ -96,7 +67,7 @@ gcloud storage buckets update "gs://${BUCKET_NAME}" --cors-file=/tmp/cors.json
 rm /tmp/cors.json
 echo "   ✅ CORS configured"
 
-# ── Step 4: Generate .env file ──────────────────────────────────────────────
+# ── Step 3: Generate .env file ──────────────────────────────────────────────
 echo ""
 echo "📝 Generating .env file..."
 
@@ -121,6 +92,7 @@ echo "  ✅ Setup complete!"
 echo "=============================================="
 echo ""
 echo "  Next steps:"
-echo "  1. Deploy the backend:  see codelab for commands"
-echo "  2. Deploy the frontend: see codelab for commands"
+echo "  1. Grant IAM roles (see codelab for commands)"
+echo "  2. Deploy the backend:  see codelab for commands"
+echo "  3. Deploy the frontend: see codelab for commands"
 echo ""
