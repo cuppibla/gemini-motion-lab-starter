@@ -2,9 +2,10 @@
 # setup.sh — Automated setup for Gemini Motion Lab
 #
 # Creates:
-#   1. GCS bucket for video storage
-#   2. Service account for backend access
-#   3. .env file with all required environment variables
+#   1. Service account for backend access
+#   2. GCS bucket for video storage (with CORS)
+#   3. IAM role bindings for the service account
+#   4. .env file with all required environment variables
 #
 # Usage:
 #   chmod +x setup.sh && ./setup.sh
@@ -40,23 +41,7 @@ echo "  Bucket:           $BUCKET_NAME"
 echo "  Service Account:  $SA_EMAIL"
 echo ""
 
-# ── Step 1: Create GCS Bucket ───────────────────────────────────────────────
-echo "🪣 Creating GCS bucket..."
-if gsutil ls -b "gs://${BUCKET_NAME}" &>/dev/null; then
-    echo "   ✅ Bucket gs://${BUCKET_NAME} already exists"
-else
-    gsutil mb -l "$REGION" "gs://${BUCKET_NAME}"
-    echo "   ✅ Created gs://${BUCKET_NAME}"
-fi
-
-# Set CORS for browser uploads
-echo '[{"origin": ["*"], "method": ["GET","PUT","POST"], "responseHeader": ["Content-Type"], "maxAgeSeconds": 3600}]' > /tmp/cors.json
-gsutil cors set /tmp/cors.json "gs://${BUCKET_NAME}"
-rm /tmp/cors.json
-echo "   ✅ CORS configured"
-
-# ── Step 2: Create Service Account ──────────────────────────────────────────
-echo ""
+# ── Step 1: Create Service Account ──────────────────────────────────────────
 echo "🔑 Creating service account..."
 if gcloud iam service-accounts describe "$SA_EMAIL" &>/dev/null; then
     echo "   ✅ Service account $SA_EMAIL already exists"
@@ -67,7 +52,57 @@ else
     echo "   ✅ Created $SA_EMAIL"
 fi
 
-# ── Step 3: Generate .env file ──────────────────────────────────────────────
+# ── Step 2: Grant IAM roles ─────────────────────────────────────────────────
+echo ""
+echo "🛡️  Granting IAM roles..."
+
+# Grant Storage Admin to service account
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+    --member="serviceAccount:$SA_EMAIL" \
+    --role="roles/storage.admin" \
+    --quiet > /dev/null 2>&1
+echo "   ✅ Granted roles/storage.admin to service account"
+
+# Grant Vertex AI User to service account
+gcloud projects add-iam-policy-binding "$PROJECT_ID" \
+    --member="serviceAccount:$SA_EMAIL" \
+    --role="roles/aiplatform.user" \
+    --quiet > /dev/null 2>&1
+echo "   ✅ Granted roles/aiplatform.user to service account"
+
+# Grant Service Account Token Creator to the Compute Engine default SA
+COMPUTE_SA=$(gcloud iam service-accounts list \
+    --format="value(email)" \
+    --filter="displayName:Compute Engine default service account" \
+    --project="$PROJECT_ID" 2>/dev/null || true)
+
+if [ -n "$COMPUTE_SA" ]; then
+    gcloud iam service-accounts add-iam-policy-binding "$SA_EMAIL" \
+        --member="serviceAccount:${COMPUTE_SA}" \
+        --role="roles/iam.serviceAccountTokenCreator" \
+        --quiet > /dev/null 2>&1
+    echo "   ✅ Granted roles/iam.serviceAccountTokenCreator to Compute SA"
+else
+    echo "   ⚠️  Compute Engine default SA not found — you'll need to grant Token Creator manually after first deploy"
+fi
+
+# ── Step 3: Create GCS Bucket ───────────────────────────────────────────────
+echo ""
+echo "🪣 Creating GCS bucket..."
+if gcloud storage buckets describe "gs://${BUCKET_NAME}" &>/dev/null; then
+    echo "   ✅ Bucket gs://${BUCKET_NAME} already exists"
+else
+    gcloud storage buckets create "gs://${BUCKET_NAME}" --location="$REGION" --project="$PROJECT_ID"
+    echo "   ✅ Created gs://${BUCKET_NAME}"
+fi
+
+# Set CORS for browser uploads
+echo '[{"origin": ["*"], "method": ["GET","PUT","POST"], "responseHeader": ["Content-Type"], "maxAgeSeconds": 3600}]' > /tmp/cors.json
+gcloud storage buckets update "gs://${BUCKET_NAME}" --cors-file=/tmp/cors.json
+rm /tmp/cors.json
+echo "   ✅ CORS configured"
+
+# ── Step 4: Generate .env file ──────────────────────────────────────────────
 echo ""
 echo "📝 Generating .env file..."
 
@@ -92,7 +127,6 @@ echo "  ✅ Setup complete!"
 echo "=============================================="
 echo ""
 echo "  Next steps:"
-echo "  1. Grant IAM roles (see codelab for commands)"
-echo "  2. Deploy the backend:  gcloud run deploy ..."
-echo "  3. Deploy the frontend: gcloud run deploy ..."
+echo "  1. Deploy the backend:  see codelab for commands"
+echo "  2. Deploy the frontend: see codelab for commands"
 echo ""
