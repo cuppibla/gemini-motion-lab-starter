@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import upload, analyze, avatar, generate, status, share, health, queue, wallet, apple_wallet
+from .routers import upload, analyze, avatar, generate, status, share, health, queue
 
 app = FastAPI(title="Gemini Motion Lab API")
 
@@ -22,6 +22,4 @@ app.include_router(share.router, prefix="/api")
 app.include_router(share.html_router)
 app.include_router(health.router, prefix="/api")
 app.include_router(queue.router, prefix="/api")
-app.include_router(wallet.router, prefix="/api")
-app.include_router(apple_wallet.router, prefix="/api")
 

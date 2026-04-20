@@ -19,7 +19,7 @@ def upload_local_to_gcs(local_path: str, bucket_name: str, dest_blob_name: str) 
 def main():
     print("Testing Gemini generate_content...")
     
-    local_video = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/public/showcase/manga-1.mp4"))
+    local_video = os.path.abspath(os.path.join(os.path.dirname(__file__), "../test_video.mp4"))
     if not os.path.exists(local_video):
         print(f"File not found: {local_video}")
         return

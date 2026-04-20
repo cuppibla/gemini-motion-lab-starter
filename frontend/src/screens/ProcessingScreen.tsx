@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QRCodeSVG } from 'qrcode.react';
 import { ProgressRing } from '../components/ProgressRing';
-import { ShowcaseGallery } from '../components/ShowcaseGallery';
 import { PROCESSING_TIPS, getMockAvatarImageUrl } from '../mockData';
 import { useApi, API_BASE } from '../hooks/useApi';
 import type { AnalysisResult } from '../hooks/useApi';
@@ -262,29 +261,15 @@ export function ProcessingScreen({
   }
 
 
-  // All phases use the same split-screen layout:
-  // Left 60%: ShowcaseGallery (always visible)
-  // Right 40%: Phase-specific content + QR + Next Person
+  // Full-width centered status panel
   return (
     <div className="flex h-full w-full">
-      {/* Left: Showcase Gallery (60%) */}
+      {/* Status Panel (full width) */}
       <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="h-full"
-        style={{ width: '60%' }}
-      >
-        <ShowcaseGallery />
-      </motion.div>
-
-      {/* Right: Status Panel (40%) */}
-      <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col items-center justify-center gap-5 px-8 overflow-hidden"
-        style={{ width: '40%' }}
+        className="flex flex-col items-center justify-center gap-5 px-8 overflow-hidden w-full"
       >
         {/* ---- Phase-specific content ---- */}
         <AnimatePresence mode="wait">

@@ -51,3 +51,10 @@ backend/test_nano_output.png
 # Local locks
 skills-lock.json
 frontend/skills-lock.json
+
+# Documentation and Training (excluded from tracking)
+codelab.md
+codelab-sample.md
+DEPLOYMENT.md
+PLAN_QR_VIDEO_COMPOSITION.md
+training-deck.html

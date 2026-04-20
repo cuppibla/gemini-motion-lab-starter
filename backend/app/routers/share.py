@@ -203,10 +203,6 @@ async def share_page(video_id: str):
 def _render_share_page(video_id: str) -> HTMLResponse:
     api_status_url = f"/api/share/{video_id}/status"
     api_download_url = f"/api/share/{video_id}/download"
-    wallet_api_url = f"/api/share/{video_id}/wallet"
-    apple_wallet_api_url = f"/api/share/{video_id}/apple-wallet"
-    wallet_enabled = "true" if settings.GOOGLE_WALLET_ISSUER_ID else "false"
-    apple_wallet_enabled = "true" if settings.APPLE_PASS_TYPE_ID else "false"
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -238,12 +234,7 @@ def _render_share_page(video_id: str) -> HTMLResponse:
     .btn-save-avatar {{
       background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2);
     }}
-    .btn-wallet {{
-      background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15);
-    }}
-    .btn-apple-wallet {{
-      background: #000; color: #fff; border: 1px solid rgba(255,255,255,0.15);
-    }}
+
     .badge {{
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(66,133,244,0.15); border: 1px solid rgba(66,133,244,0.3);
@@ -332,22 +323,11 @@ def _render_share_page(video_id: str) -> HTMLResponse:
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
       Save Avatar Image
     </a>
-    <a class="btn btn-wallet hidden" id="wallet-link" href="#" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg>
-      Add to Google Wallet
-    </a>
-    <a class="btn btn-apple-wallet hidden" id="apple-wallet-link" href="#">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M16 12h.01"/></svg>
-      Add to Apple Wallet
-    </a>
+
   </div>
 
   <script>
     const STATUS_URL = "{api_status_url}";
-    const WALLET_URL = "{wallet_api_url}";
-    const APPLE_WALLET_URL = "{apple_wallet_api_url}";
-    const WALLET_ENABLED = {wallet_enabled};
-    const APPLE_WALLET_ENABLED = {apple_wallet_enabled};
     let videoUrl = null;
     const stageText = document.getElementById('stage-text');
     const elapsedEl = document.getElementById('elapsed');
@@ -428,27 +408,6 @@ def _render_share_page(video_id: str) -> HTMLResponse:
         const avatarDl = document.getElementById('avatar-download-link');
         avatarDl.href = avatarUrl;
         avatarDl.classList.remove('hidden');
-      }}
-
-      // Fetch Google Wallet URL if enabled
-      if (WALLET_ENABLED) {{
-        fetch(WALLET_URL)
-          .then(r => r.ok ? r.json() : null)
-          .then(data => {{
-            if (data && data.wallet_url) {{
-              const walletLink = document.getElementById('wallet-link');
-              walletLink.href = data.wallet_url;
-              walletLink.classList.remove('hidden');
-            }}
-          }})
-          .catch(() => {{}});
-      }}
-
-      // Show Apple Wallet button if enabled
-      if (APPLE_WALLET_ENABLED) {{
-        const appleLink = document.getElementById('apple-wallet-link');
-        appleLink.href = APPLE_WALLET_URL;
-        appleLink.classList.remove('hidden');
       }}
     }}
 
