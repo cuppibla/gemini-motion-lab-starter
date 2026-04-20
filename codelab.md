@@ -633,8 +633,21 @@ echo "🎬 Your Gemini Motion Lab is live at: $FRONTEND_URL"
 
 👉 Open the URL in your browser — you should see the Gemini Motion Lab kiosk interface!
 
+### 4. Link the Backend to the Frontend
+
+Your backend generates a QR code so users can scan and download their videos. It needs to know your frontend URL to create the correct link.
+
+👉💻 Update the backend with your frontend URL:
+
+```bash
+gcloud run services update gemini-motion-lab-backend \
+  --region us-central1 \
+  --update-env-vars PUBLIC_BASE_URL=$FRONTEND_URL \
+  --project $GOOGLE_CLOUD_PROJECT
+```
+
 > aside positive
-> 🎉 Both services are deployed! The frontend calls the backend via the baked-in `VITE_API_BASE` URL. Cloud Run service URLs are **permanent** — they don't change between redeployments.
+> 🎉 Both services are deployed and linked! The frontend uses `VITE_API_BASE` to call the backend, and the backend uses `PUBLIC_BASE_URL` to create QR codes linking back to the frontend's `/share` page. Cloud Run service URLs are **permanent** — they don't change between redeployments.
 
 ---
 
