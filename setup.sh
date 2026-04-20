@@ -71,20 +71,14 @@ gcloud projects add-iam-policy-binding "$PROJECT_ID" \
 echo "   ✅ Granted roles/aiplatform.user to service account"
 
 # Grant Service Account Token Creator to the Compute Engine default SA
-COMPUTE_SA=$(gcloud iam service-accounts list \
-    --format="value(email)" \
-    --filter="displayName:Compute Engine default service account" \
-    --project="$PROJECT_ID" 2>/dev/null || true)
+PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
+COMPUTE_SA="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com"
 
-if [ -n "$COMPUTE_SA" ]; then
-    gcloud iam service-accounts add-iam-policy-binding "$SA_EMAIL" \
-        --member="serviceAccount:${COMPUTE_SA}" \
-        --role="roles/iam.serviceAccountTokenCreator" \
-        --quiet > /dev/null 2>&1
-    echo "   ✅ Granted roles/iam.serviceAccountTokenCreator to Compute SA"
-else
-    echo "   ⚠️  Compute Engine default SA not found — you'll need to grant Token Creator manually after first deploy"
-fi
+gcloud iam service-accounts add-iam-policy-binding "$SA_EMAIL" \
+    --member="serviceAccount:${COMPUTE_SA}" \
+    --role="roles/iam.serviceAccountTokenCreator" \
+    --quiet > /dev/null 2>&1
+echo "   ✅ Granted roles/iam.serviceAccountTokenCreator to Compute SA (${COMPUTE_SA})"
 
 # ── Step 3: Create GCS Bucket ───────────────────────────────────────────────
 echo ""
